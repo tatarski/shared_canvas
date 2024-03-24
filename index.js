@@ -1,7 +1,7 @@
 // Кода на сървъра
 const express   = require('express');
 const fs        = require('fs');
-const PORT = 3456;
+const PORT = process.env.PORT;
 
 const app = express();
 let grid = [];

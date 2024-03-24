@@ -1,10 +1,10 @@
 // Кода в браузъра
 let grid, size = 60, hasGrid = false;
 let tekCvqt = "red";
-let ip = "localhost";
+let ip = window.location.origin;
 
 function init() {
-    fetch("http://"+ ip +":3456/grid").then(function (res) {
+    fetch("http://"+ ip +"/grid").then(function (res) {
         res.json().then(function (serverGrid) {
             grid = serverGrid;
             hasGrid = true;
@@ -35,7 +35,7 @@ function update() {
 function mouseup() {
     let mx = Math.floor(mouseX / size), my = Math.floor(mouseY / size);
     grid[mx][my] = tekCvqt;
-    fetch("http://" + ip + ":3456/namacai?X="+mx+"&Y="+my+"&Col="+tekCvqt, {
+    fetch("http://" + ip + "/namacai?X="+mx+"&Y="+my+"&Col="+tekCvqt, {
         method: "POST"
     }).then(function(res) {
         res.json().then(function(resJSON) {
