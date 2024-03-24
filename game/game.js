@@ -4,7 +4,7 @@ let tekCvqt = "red";
 let ip = window.location.origin;
 
 function init() {
-    fetch("http://"+ ip +"/grid").then(function (res) {
+    fetch("http://"+ ip +":10000/grid").then(function (res) {
         res.json().then(function (serverGrid) {
             grid = serverGrid;
             hasGrid = true;
@@ -35,7 +35,7 @@ function update() {
 function mouseup() {
     let mx = Math.floor(mouseX / size), my = Math.floor(mouseY / size);
     grid[mx][my] = tekCvqt;
-    fetch("http://" + ip + "/namacai?X="+mx+"&Y="+my+"&Col="+tekCvqt, {
+    fetch("http://" + ip + ":10000/namacai?X="+mx+"&Y="+my+"&Col="+tekCvqt, {
         method: "POST"
     }).then(function(res) {
         res.json().then(function(resJSON) {
